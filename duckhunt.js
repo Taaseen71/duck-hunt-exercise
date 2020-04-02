@@ -15,19 +15,27 @@ window.onload = function () {
   function part1() {
     let divDuck1 = document.createElement("div");
     divDuck1.className += ('duck');
-    console.log(divDuck1);
+    // console.log(divDuck1);
     let body1 = document.getElementsByTagName("body")[0];
 
     append(body1, divDuck1);
-    console.log(body1.innerHTML);
-    return body;
+
+
+    let duck1 = document.querySelector(".duck");
+    console.log(duck1);
+    //Attributes can be set to duck1 duck.setAttirbute('style', 'background-color:skyblue;')
+    //or duck1.style.top = 2em
+
+    // console.log(body1.innerHTML);
+    return duck1;
     // returns
     // <body>
     //   <script src="duckhunt.js"></script>
     //   <div class="duck"></div></body>
   }
+  // console.log(part1())
 
-  part1();
+
 
   // 2. Next, use setInterval to toggle the "flap" class on the duck every 250 ms (1/4 second)
   // https://www.w3schools.com/jsref/met_win_setinterval.asp
@@ -45,11 +53,15 @@ window.onload = function () {
   //       And Math.random() * window.innerHeight   for "top"
 
   function moveDuck(duck) {
-    duck.style.top = Math.random() * window.innerHeight;
-    duck.style.left = Math.random() * window.innerWidth;
-    console.log(moveDuck);
-    return moveDuck;
+    let tTop = duck.style.top = Math.random() * window.innerHeight;
+    let lLeft = duck.style.left = Math.random() * window.innerWidth;
+    console.log(tTop);
+    console.log(lLeft);
+    return tTop, lLeft;
   }
+  // moveDuck(part1());
+  //my duck ISNT MOVING ANYWHERE
+
 
   //moveDuck(body, 'black', 'green');  works when replaced top with background, and set x and y arguments for top and left
 
