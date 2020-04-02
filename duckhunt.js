@@ -1,12 +1,33 @@
-window.onload = function() {
+window.onload = function () {
   const body = document.body;
 
   console.log(body);
+
 
   // 1. Create a <div> with the class "duck" and add it to the body.  Do this step by step
   // ( 1. create the element
   //   2. add a class to the element
   //   3. append the element to the body )
+  function append(component1, component2) {
+    component1.appendChild(component2);
+  }
+
+  function part1() {
+    let divDuck1 = document.createElement("div");
+    divDuck1.className += ('duck');
+    console.log(divDuck1);
+    let body1 = document.getElementsByTagName("body")[0];
+
+    append(body1, divDuck1);
+    console.log(body1.innerHTML);
+    return body;
+    // returns
+    // <body>
+    //   <script src="duckhunt.js"></script>
+    //   <div class="duck"></div></body>
+  }
+
+  part1();
 
   // 2. Next, use setInterval to toggle the "flap" class on the duck every 250 ms (1/4 second)
   // https://www.w3schools.com/jsref/met_win_setinterval.asp
