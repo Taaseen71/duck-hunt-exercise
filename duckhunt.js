@@ -1,84 +1,125 @@
 window.onload = function () {
   const body = document.body;
 
-  console.log(body);
+  console.log("body = ", body);
 
+  function createDuck() {
+    // 1. Create a <div> with the class "duck" and add it to the body.  Do this step by step
+    // ( 1. create the element
+    //   2. add a class to the element
+    //   3. append the element to the body )
+    function append(component1, component2) {
+      component1.appendChild(component2);
+    }
 
-  // 1. Create a <div> with the class "duck" and add it to the body.  Do this step by step
-  // ( 1. create the element
-  //   2. add a class to the element
-  //   3. append the element to the body )
-  function append(component1, component2) {
-    component1.appendChild(component2);
-  }
+    function part1() {
+      let divDuck1 = document.createElement("div");
+      divDuck1.className += ('duck');
+      // console.log(divDuck1);
+      let body1 = document.getElementsByTagName("body")[0];
 
-  function part1() {
-    let divDuck1 = document.createElement("div");
-    divDuck1.className += ('duck');
-    // console.log(divDuck1);
-    let body1 = document.getElementsByTagName("body")[0];
+      append(body1, divDuck1);
+      console.log("divDuck1 = ", divDuck1)
+      return divDuck1;
+    }
+    // let duck1 = document.querySelector(".duck");
 
-    append(body1, divDuck1);
+    // console.log(duck1);
+    // console.log(divDuck1) 
+    //BOTH RETURN THE SAME VALUE. undering for self.
 
-
-    let duck1 = document.querySelector(".duck");
-    console.log(duck1);
     //Attributes can be set to duck1 duck.setAttirbute('style', 'background-color:skyblue;')
     //or duck1.style.top = 2em
 
     // console.log(body1.innerHTML);
-    return duck1;
+
+
+
+
     // returns
     // <body>
     //   <script src="duckhunt.js"></script>
     //   <div class="duck"></div></body>
+
+    // console.log(part1())
+
+
+
+    // 2. Next, use setInterval to toggle the "flap" class on the duck every 250 ms (1/4 second)
+    // https://www.w3schools.com/jsref/met_win_setinterval.asp
+    function setInterval(flap) {
+      setInterval(function () {
+        let flap;
+      }, 250);
+    }
+
+
+    // 3. Fantastic!  Now, let's move the duck using CSS "top" and "left". Create
+    // a function `moveDuck` that takes a duck object as an argument and sets the
+    // "top" and "left" CSS properties.
+    // HINT: Use Math.random() * window.innerWidth    for "left"
+    //       And Math.random() * window.innerHeight   for "top"
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function moveDuck(duck) {
+
+      let topValue = duck.style.top;
+      let leftValue = duck.style.left;
+
+      topValue = (Math.random() * window.innerHeight);
+      leftValue = (Math.random() * window.innerWidth);
+      console.log("top and left values are = ", topValue, leftValue);
+
+
+      return topValue, leftValue;
+    }
+    //The random numbers are generating, but the position of duck remains unchanged.
+
+    moveDuck(part1());
+
+    function everySecond(function1) {
+      setInterval(function () { function1 }, 1000);
+    }
+
+    //my duck ISNT MOVING ANYWHERE
+
+
+    //moveDuck(body, 'black', 'green');  works when replaced top with background, and set x and y arguments for top and left
+    // let x = document.getElementsByTagName("H1")[0];
+    // x.setAttribute("class", "democlass");
+
+
+    // 4. Try making the duck move to a different location every second (what did we use to do this several lines up??)
+
+
+    // 5. Congratulations! Move on to part 2!
+
+    // ---------------------------- PART 2 ---------------------------------
+
+    // 6. Things are getting a bit messy. Let's create
+    //    a "function" called createDuck() that does everything in 1-4
+    //    and "returns" the duck object
+
+
+    // return duck;
   }
-  // console.log(part1())
-
-
-
-  // 2. Next, use setInterval to toggle the "flap" class on the duck every 250 ms (1/4 second)
-  // https://www.w3schools.com/jsref/met_win_setinterval.asp
-  function setInterval(flap) {
-    setInterval(function () {
-      let flap;
-    }, 250);
-  }
-
-
-  // 3. Fantastic!  Now, let's move the duck using CSS "top" and "left". Create
-  // a function `moveDuck` that takes a duck object as an argument and sets the
-  // "top" and "left" CSS properties.
-  // HINT: Use Math.random() * window.innerWidth    for "left"
-  //       And Math.random() * window.innerHeight   for "top"
-
-  function moveDuck(duck) {
-    let tTop = duck.style.top = Math.random() * window.innerHeight;
-    let lLeft = duck.style.left = Math.random() * window.innerWidth;
-    console.log(tTop);
-    console.log(lLeft);
-    return tTop, lLeft;
-  }
-  // moveDuck(part1());
-  //my duck ISNT MOVING ANYWHERE
-
-
-  //moveDuck(body, 'black', 'green');  works when replaced top with background, and set x and y arguments for top and left
-
-
-
-  // 4. Try making the duck move to a different location every second (what did we use to do this several lines up??)
-
-  // 5. Congratulations! Move on to part 2!
-
-  // ---------------------------- PART 2 ---------------------------------
-
-  // 6. Things are getting a bit messy. Let's create
-  //    a "function" called createDuck() that does everything in 1-4
-  //    and "returns" the duck object
+  createDuck();
 
   // 7. Now, let's create lots of ducks!  Use a "for" loop to create 5 ducks
   //    using our fancy new createDuck() function
+
+
+  function multipleDuck() {
+    let array = [];
+    for (let i = 0; i < 5; i++) {
+      array.push(createDuck());
+    }
+
+    return array;
+  }
+
+  multipleDuck();
 
   // 8. Uh oh, our ducks are overlapping.  Modify createDuck so each time
   //     it creates a duck, it appears in a random location
@@ -91,6 +132,8 @@ window.onload = function () {
 
   // 11. BOOM. Attach a "click" handler that adds the "shot" class to
   //     the duck when you click on it!
+
+
 
   // 12. After a duck has been clicked on, remove it from the DOM after
   //     a short delay (1 second) Hint Hint...use setTimeout
