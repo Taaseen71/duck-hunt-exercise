@@ -64,17 +64,20 @@ window.onload = function () {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     function moveDuck(duck) {
 
-      let topValue = duck.style.top;
-      let leftValue = duck.style.left;
-
-      topValue = (Math.random() * window.innerHeight);
-      leftValue = (Math.random() * window.innerWidth);
-      console.log("top and left values are = ", topValue, leftValue);
 
 
-      return topValue, leftValue;
+
+      duck.style.top = `${Math.random() * window.innerHeight}px`;
+      duck.style.left = `${Math.random() * window.innerHeight}px`;
+      console.log("top and left values are = ", (duck.style.top), (duck.style.left));
+
+
+
+
+      return duck.style.top, duck.style.left;
     }
     //The random numbers are generating, but the position of duck remains unchanged.
+    //DUCKS A RE MOVING. REPEAT DUCKS ARE MOVINGGGG
 
     moveDuck(part1());
 
@@ -125,6 +128,9 @@ window.onload = function () {
   //     it creates a duck, it appears in a random location
   // HINT: You may want to create a `randomPosition()` function that you can use
   //       to set the ducks' initial locations and in your `moveDuck()` function;
+  //   function randomPosition() {
+
+  // }
 
   // 9. Keep going! Move onto part 3!
 
