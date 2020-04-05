@@ -200,25 +200,38 @@ window.onload = function () {
       //* OMG IT WORKS OMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMG
       //? add event listeners to each of the ones, and add to class=shot
       //TODO: 12. After a duck has been clicked on, remove it from the DOM after
-      setTimeout(function () { pewPEW[k].setAttribute('class', 'shot'); }, 1000)
+      setTimeout(function () {
+        pewPEW[k].setAttribute('class', 'shot');
 
-
-
+        let rm = document.querySelectorAll('.shot');
+        rm[0].remove();
+        //* removing part was so painful :(
+      }, 1000)
     })
   }
 
 
 
 
+  // TODO:13. Create a new function named checkForWinner() that reads the DOM
+  let checkForWinner = () => {
+    let checkForDucks = this.document.querySelectorAll('.duck')
+    if (checkForDucks.length === 0) {
+      alert('winner winner Chicken Dinner');
+      location.reload(); //? 
+      return;
+    }
+
+  }
 
 
+  this.setInterval(function () { checkForWinner() }, 3000)
 
 
 
   //TODO:     a short delay (1 second) Hint Hint...use setTimeout
   //TODO:     as for removing the element check out https://dzone.com/articles/removing-element-plain
 
-  // TODO:13. Create a new function named checkForWinner() that reads the DOM
   //TODO:     to see if there are any ducks left. (How can we check the DOM for more than one element?, and how can we see how many elements we get back) If not, alert "YOU WIN!"
 
   //TODO: 14. BONUS: The ducks are moving pretty erratically, can you think
